@@ -1,11 +1,13 @@
 class Particle {
-	constructor() {
+	constructor(consistence, refraction, levelsrefraction) {
 		this.pos = createVector(width / 2, height / 2);
 		this.rays = [];
 
-		for (let a = 0; a < 360; a += 0.3) {
+		for (let a = 0; a < 360; a += consistence) {
 			this.rays.push(new Ray(this.pos, radians(a), 30));
 		}
+		this.refraction = refraction;
+		this.levelsrefraction = levelsrefraction;
 	}
 
 	update(x, y) {
@@ -27,19 +29,20 @@ class Particle {
 		}
 
 		if (closestwall) {
+			var reflections = [];
 			counter += 1;
 			stroke(255, reflection.luminescence / 3);
 			strokeWeight(300 / distancefromlight);
 			line(reflection.pos.x, reflection.pos.y, closestwall.x, closestwall.y, 1);
-			if (counter >= 2) {
+			if (counter >= this.levelsrefraction) {
 				return;
 			} else {
 				var newreflection = new Ray(
 					closestwall,
 					radians(degrees(reflection.angle) + 40),
-					reflection.luminescence * 1 / 5
+					reflection.luminescence
 				);
-				this.reflectioncheck(walls, newreflection, counter);
+				this.reflectioncheck(walls, newreflection, counter, 200);
 			}
 		}
 	}
@@ -62,11 +65,11 @@ class Particle {
 			if (closestwall) {
 				var reflections = [];
 				stroke(255, 30);
-				strokeWeight(5);
+				strokeWeight(3);
 				line(this.pos.x, this.pos.y, closestwall.x, closestwall.y);
-				for (i = 0; i < 50; i++) {
+				for (i = 0; i < this.refraction; i++) {
 					reflections.push(
-						new Ray(closestwall, radians(degrees(ray.angle) + 30 + i), ray.luminescence * 1 / 5)
+						new Ray(closestwall, radians(degrees(ray.angle) + 30 + i), ray.luminescence * 1 / 4)
 					);
 				}
 
