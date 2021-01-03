@@ -3,7 +3,7 @@
 
 2D Ray casting with refraction. [Check the github page of the project](https://jonathasgouv.github.io/refractionsimulator/)
 
-![Alt text](readmeimage.png?raw=true "2D Raycasting")
+![2D Raycasting"](rsimulator.gif)
 
 ## Getting Started
 This is a simple project, all you need is contained within itself. Just follow the clone instructions and you'll be good to go.
