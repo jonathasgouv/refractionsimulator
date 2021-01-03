@@ -5,6 +5,13 @@
 
 ![2D Raycasting"](rsimulator.gif)
 
+## Table of Contents
+* [Getting Started](#getting-started)
+* [Installing](#installing)
+* [Built With](#built-with)
+* [Author](#author)
+* [License](#license)
+
 ## Getting Started
 This is a simple project, all you need is contained within itself. Just follow the clone instructions and you'll be good to go.
 
